@@ -1,0 +1,50 @@
+{
+  "backup_session": "20250927_183051",
+  "backup_directory": "../data/backups/backup_20250927_183051",
+  "datasets": {
+    "combined": {
+      "pickle": "../data/backups/backup_20250927_183051/combined.pkl",
+      "csv": "../data/backups/backup_20250927_183051/combined.csv",
+      "tsv": "../data/backups/backup_20250927_183051/combined.tsv",
+      "hash": "32d04007b240f2c6bf6341ef285422b3",
+      "shape": [
+        569033,
+        3
+      ],
+      "timestamp": "20250927_183051"
+    },
+    "train": {
+      "pickle": "../data/backups/backup_20250927_183051/train.pkl",
+      "csv": "../data/backups/backup_20250927_183051/train.csv",
+      "tsv": "../data/backups/backup_20250927_183051/train.tsv",
+      "hash": "57c996e77a1ad5e6bb2d1fd03f07eb7f",
+      "shape": [
+        549367,
+        3
+      ],
+      "timestamp": "20250927_183051"
+    },
+    "validation": {
+      "pickle": "../data/backups/backup_20250927_183051/validation.pkl",
+      "csv": "../data/backups/backup_20250927_183051/validation.csv",
+      "tsv": "../data/backups/backup_20250927_183051/validation.tsv",
+      "hash": "13b9b8427b47f156a79a0e96dbe3e279",
+      "shape": [
+        9842,
+        3
+      ],
+      "timestamp": "20250927_183051"
+    },
+    "test": {
+      "pickle": "../data/backups/backup_20250927_183051/test.pkl",
+      "csv": "../data/backups/backup_20250927_183051/test.csv",
+      "tsv": "../data/backups/backup_20250927_183051/test.tsv",
+      "hash": "667ba05668855edea2719b5844ddf9c4",
+      "shape": [
+        9824,
+        3
+      ],
+      "timestamp": "20250927_183051"
+    }
+  }
+}

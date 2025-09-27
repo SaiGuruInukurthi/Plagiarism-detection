@@ -1,0 +1,188 @@
+# Academic Plagiarism Detection System - .gitignore
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# poetry
+poetry.lock
+
+# pdm
+.pdm.toml
+
+# PEP 582
+__pypackages__/
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+
+# Machine Learning & Data Science
+# Large dataset files (keep only processed samples)
+data/raw/
+data/temp/
+data/cache/
+data/downloads/
+*.h5
+*.hdf5
+*.pkl.gz
+*.parquet.gz
+
+# Model files (too large for git)
+models/*.bin
+models/*.safetensors
+models/*.onnx
+models/checkpoints/
+models/trained/
+*.model
+*.ckpt
+
+# Logs and monitoring
+logs/*.log
+logs/tensorboard/
+logs/wandb/
+.wandb/
+
+# Results and outputs (keep summary files only)
+results/plots/
+results/predictions/
+results/evaluation/
+results/temp/
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+
+# Large backup files (keep manifest only)
+data/backups/backup_*/
+!data/backups/backup_*/backup_manifest.json
+
+# spaCy models
+en_core_web_*/
+
+# Hugging Face cache
+.cache/huggingface/
+
+# Specific to this project
+# Large processed datasets (keep samples only)
+data/processed/plagiarism_*.txt
+data/working/*.pkl
+data/working/*.csv
+!data/working/*_sample*
+
+# Generated result files
+results/*.png
+results/*.jpg
+results/*.pdf
+results/*.html
+!results/README.md
+
+# Configuration with sensitive data
+config_local.py
+.secrets
