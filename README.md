@@ -2,7 +2,10 @@
 
 ## 🎯 Project Overview
 
-This project implements an advanced AI/ML-based plagiarism detection system specifically designed for academic assignments. Using an ensemble architecture combining multiple state-of-the-art algorithms, the system analyzes text content and generates comprehensive similarity reports to help educators identify potential plagiarism with high accuracy (85-92% expected performance).
+This project implements an advanced AI/ML-based plagiarism detection system specifically designed for academic assignments. Using an ensemble architecture combining multiple state-of-the-art algorithms, the system analyzes text content and generates comprehensive similarity reports to help educators identify potential plagiarism with high accuracy.
+
+### ✅ **Trained Model Available!**
+Our BERT-based model has been successfully trained and tested with **86.7% accuracy** and **0.868 F1-score**. See [MODEL_INFO.md](MODEL_INFO.md) for complete performance details and usage instructions.
 
 ## 🚀 Problem Statement
 
