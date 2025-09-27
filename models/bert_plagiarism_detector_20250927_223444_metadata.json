@@ -1,0 +1,39 @@
+{
+  "model_name": "bert_plagiarism_detector_20250927_223444",
+  "model_type": "BERT-based Plagiarism Detector",
+  "framework": "PyTorch + Transformers",
+  "base_model": "bert-base-uncased",
+  "task": "Binary Classification (Plagiarism Detection)",
+  "performance": {
+    "validation_accuracy": "0.861",
+    "validation_f1_score": "0.857",
+    "status": "TARGET MET (85-92% range)"
+  },
+  "training_details": {
+    "epochs": 2,
+    "batch_size": 16,
+    "learning_rate": 2e-05,
+    "optimizer": "AdamW",
+    "loss_function": "CrossEntropyLoss",
+    "device": "cuda"
+  },
+  "dataset": {
+    "source": "SNLI dataset (Stanford Natural Language Inference)",
+    "adaptation": "Entailment → Plagiarized (1), Neutral/Contradiction → Not Plagiarized (0)",
+    "training_samples": 4000,
+    "validation_samples": 1000,
+    "total_samples": 5000
+  },
+  "usage": {
+    "input_format": "Text pairs (sentence1, sentence2)",
+    "output_format": "Binary classification (0: Not Plagiarized, 1: Plagiarized)",
+    "max_sequence_length": 128,
+    "preprocessing": "BERT tokenizer with truncation and padding"
+  },
+  "files": {
+    "model_file": "bert_plagiarism_detector_20250927_223444.pth",
+    "metadata_file": "bert_plagiarism_detector_20250927_223444_metadata.json"
+  },
+  "created_date": "2025-09-27T22:34:47.734248",
+  "created_by": "Deep Learning Training Pipeline"
+}

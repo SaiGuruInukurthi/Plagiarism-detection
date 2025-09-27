@@ -18,6 +18,12 @@ parts/
 sdist/
 var/
 wheels/
+
+# Large model files (due to GitHub's 100MB limit)
+*.pth
+models/*.pth
+*.pkl
+*.bin
 share/python-wheels/
 *.egg-info/
 .installed.cfg
