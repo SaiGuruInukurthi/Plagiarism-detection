@@ -1,1 +1,0 @@
-Machine learning algorithms are powerful tools for analyzing large datasets and making predictions based on patterns in the data.

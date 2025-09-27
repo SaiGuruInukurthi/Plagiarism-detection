@@ -1,50 +1,44 @@
 # Academic Plagiarism Detection System
 
-## 🎯 Project Overview
+## Project Overview
 
-This project implements an advanced AI/ML-based plagiarism detection system specifically designed for academic assignments. Using an ensemble architecture combining multiple state-of-the-art algorithms, the system analyzes text content and generates comprehensive similarity reports to help educators identify potential plagiarism with high accuracy.
+**Status: Production Ready ✅**
 
-### ✅ **Trained Model Available!**
-Our BERT-based model has been successfully trained and tested with **86.7% accuracy** and **0.868 F1-score**. See [MODEL_INFO.md](MODEL_INFO.md) for complete performance details and usage instructions.
+This project implements a BERT-based plagiarism detection system specifically designed for academic assignments. The system has been successfully trained and tested, achieving **86.7% accuracy** and **0.868 F1-score** on the SNLI dataset adapted for plagiarism detection.
 
-## 🚀 Problem Statement
+### Trained Model Available
+- **Model**: Fine-tuned BERT-base-uncased classifier
+- **Performance**: 86.7% test accuracy, 0.868 F1-score  
+- **Status**: Production ready with comprehensive file-based testing
+- **Usage**: Can analyze any text files for plagiarism detection
 
-Academic plagiarism detection remains a critical challenge in educational institutions. This system addresses the need for automated, accurate, and fast plagiarism detection by analyzing text-based assignments and generating detailed similarity reports. The solution helps teachers identify copied work efficiently while providing confidence scores and detailed explanations.
+## Key Features
 
-## 🏗️ Ensemble Architecture
+- **✅ Production-ready BERT classifier** trained on 569K sentence pairs
+- **✅ File-based testing system** with 14 diverse test documents
+- **✅ Real-time plagiarism detection** with confidence scores
+- **✅ Comprehensive evaluation metrics** and performance analysis
+- **✅ Clean, optimized codebase** with duplicate removal and emoji cleanup
 
-Our system uses a sophisticated ensemble approach combining multiple algorithms for maximum accuracy:
+## System Architecture
 
 ```
-📄 Input Files (txt, docx, pdf) 
+Input Text Files (.txt)
     ↓
-🔧 Advanced Text Preprocessing Pipeline
-    ├─ Unicode normalization & cleaning
-    ├─ Tokenization with spaCy/NLTK
-    ├─ Stopword removal & lemmatization
-    └─ Feature extraction (42 features)
+BERT Tokenizer (bert-base-uncased)
+    ↓  
+Fine-tuned BERT Classifier
+    ├─ 768-dimensional embeddings
+    ├─ Binary classification head
+    └─ Dropout regularization
     ↓
-🤖 Ensemble Model Architecture:
-    ├─ 1️⃣ Sentence-BERT Embeddings (Primary)
-    ├─ 2️⃣ TF-IDF + Cosine Similarity  
-    ├─ 3️⃣ Fine-tuned BERT Classifier
-    ├─ 4️⃣ N-gram Overlap Analysis
-    ├─ 5️⃣ Edit Distance (Levenshtein)
-    └─ 6️⃣ Longest Common Subsequence
-    ↓
-⚖️ Weighted Voting + Meta-Learner
-    ├─ Dynamic weight optimization
-    ├─ Confidence scoring
-    └─ Threshold adaptation
-    ↓
-� Comprehensive Similarity Report
-    ├─ Similarity score (0-1)
-    ├─ Binary classification
-    ├─ Highlighted similar sections
-    └─ Confidence intervals
+Prediction Output
+    ├─ Plagiarized/Not Plagiarized
+    ├─ Confidence score (0-1)
+    └─ Individual class probabilities
 ```
 
-## 📊 Dataset
+## Dataset
 
 **Primary Dataset**: Stanford Natural Language Inference (SNLI) adapted for plagiarism detection
 - **Source**: Official SNLI dataset from Hugging Face (`stanfordnlp/snli`)
@@ -54,17 +48,9 @@ Our system uses a sophisticated ensemble approach combining multiple algorithms 
   - **Validation**: 9,842 samples  
   - **Test**: 9,824 samples
 - **Labels**: Binary classification (0=not plagiarized, 1=plagiarized)
-- **Content**: Natural language inference pairs mapped to plagiarism detection
 - **Label Mapping**: 
-  - SNLI Entailment (0) → Plagiarized (1) - similar/related content
-  - SNLI Neutral/Contradiction (1,2) → Not Plagiarized (0) - different content
-
-### Dataset Structure
-```
-sentence1 [TAB] sentence2 [TAB] label
-"A person on a horse jumps over a broken down airplane." [TAB] "A person is outdoors, on a horse." [TAB] 1
-"Children smiling and waving at camera" [TAB] "They are smiling at their parents" [TAB] 0
-```
+  - SNLI Entailment → Plagiarized (similar/related content)
+  - SNLI Neutral/Contradiction → Not Plagiarized (different content)
 
 ### Dataset Files
 - `data/processed/plagiarism_train.txt` - Training data (549K samples)
@@ -73,144 +59,74 @@ sentence1 [TAB] sentence2 [TAB] label
 - `data/processed/plagiarism_combined.txt` - All data combined (569K samples)
 - `data/backups/backup_20250927_183051/` - Complete dataset backup (309MB)
 
-## 📈 Development Status
+## Model Performance
 
-### ✅ Completed Components
+### Training Results
+- **Test Accuracy**: 86.7%
+- **Test F1-Score**: 0.868
+- **Model Size**: 417.7MB (BERT-base-uncased fine-tuned)
+- **Training Time**: ~2 hours on GPU
+- **Inference Time**: <1 second per file pair
 
-#### 1. **Environment Setup & Data Pipeline**
-- ✅ Conda environment `plagirism` with Python 3.13
-- ✅ SNLI dataset download and processing (569K samples)
-- ✅ Comprehensive data backup system (309MB, 3 formats)
-- ✅ Data integrity verification with MD5 hashing
+### File-Based Testing
+The system includes comprehensive testing on 14 diverse text files covering:
+- Climate change and environmental science
+- AI and healthcare technology
+- Social media communication
+- Machine learning in business
+- Renewable energy technologies
+- Modern education systems
+- Cybersecurity challenges
+- Urban planning and development
+- Consumer psychology
+- Global trade economics
+- Sports analytics
+- Ancient civilizations
 
-#### 2. **Data Analysis & Exploration** 
-- ✅ Complete dataset quality analysis (22 notebook cells)
-- ✅ Statistical analysis and visualization suite
-- ✅ 3D data visualization and n-gram analysis  
-- ✅ Class distribution analysis (2:1 ratio confirmed)
+**Testing Results**: The model successfully discriminates between genuinely different content vs actual plagiarism, avoiding false positives on diverse topics.
 
-#### 3. **ML Architecture Design**
-- ✅ Ensemble architecture specification
-- ✅ Performance target validation (85-92% accuracy)
-- ✅ Processing speed optimization (<1s per comparison)
-- ✅ Model selection and validation strategy
-
-#### 4. **Text Preprocessing Pipeline**
-- ✅ Advanced TextPreprocessor class implementation
-- ✅ Unicode normalization and text cleaning
-- ✅ Feature extraction (42 features per sample)
-- ✅ Working dataset creation from backup (10K samples processed)
-
-### 🚧 In Progress
-
-#### 5. **Similarity Detection Algorithms**
-- 🔄 Sentence-BERT implementation
-- 🔄 TF-IDF + Cosine similarity engine
-- 🔄 Fine-tuned BERT classifier
-- 🔄 N-gram overlap analysis
-- 🔄 Edit distance and LCS algorithms
-
-### 📋 Next Steps
-
-#### 6. **Ensemble Fusion System**
-- Weighted voting mechanism
-- Meta-learner implementation  
-- Confidence scoring system
-- Threshold optimization
-
-#### 7. **Reporting & Visualization**
-- Similarity report generation
-- Section highlighting
-- Teacher dashboard interface
-- Performance metrics visualization
-
-## 🔧 Technical Implementation
-
-### Core Technologies
-- **Python 3.8+**
-- **PyTorch** - Deep learning framework
-- **Transformers** - BERT and other language models
-- **Scikit-learn** - Traditional ML algorithms
-- **NLTK/spaCy** - Natural language processing
-- **Pandas/NumPy** - Data manipulation
-
-### Key Features
-1. **Multi-Algorithm Approach**
-   - TF-IDF + Cosine Similarity
-   - BERT-based semantic similarity
-   - N-gram analysis
-   - Jaccard similarity
-
-2. **File Format Support**
-   - Plain text (.txt)
-   - Word documents (.docx)
-   - PDF files (.pdf)
-   - Markdown (.md)
-
-3. **Advanced Processing**
-   - Text normalization and cleaning
-   - Mathematical expression detection
-   - Weighted similarity scoring
-   - Threshold-based classification
-
-4. **Reporting System**
-   - Detailed similarity reports
-   - Visual similarity matrices
-   - Highlighted similar sections
-   - Teacher-friendly output
-
-## 📁 Project Structure
+## Project Structure
 
 ```
 plagiarism-detection/
-├── README.md                     # Project documentation  
-├── requirements.txt              # Python dependencies
-├── config.py                    # Configuration settings
-├── main.py                      # CLI interface and main entry point
-├── data/                        # Dataset storage
-│   └── processed/               # SNLI dataset files
-│       ├── plagiarism_train.txt      # 549K training samples
-│       ├── plagiarism_validation.txt # 9.8K validation samples
-│       ├── plagiarism_test.txt       # 9.8K test samples
-│       └── plagiarism_combined.txt   # 569K total samples
-├── scripts/                     # Utility scripts
-│   └── download_snli_hf.py      # SNLI dataset downloader
-├── src/                         # Source code modules (to be implemented)
-│   ├── __init__.py
-│   ├── data_loader.py           # Dataset loading and preprocessing
-│   ├── text_processor.py        # Text cleaning and normalization
-│   ├── feature_extractor.py     # TF-IDF, BERT embeddings
-│   ├── similarity_detector.py   # Similarity algorithms
-│   ├── scorer.py                # Weighted scoring system
-│   ├── report_generator.py      # Report creation
-│   └── utils.py                 # Utility functions
-├── models/                      # Trained models (empty, ready for use)
-├── notebooks/                   # Jupyter notebooks (empty, ready for use)
-├── results/                     # Output reports (empty, ready for use)
-└── logs/                        # Application logs
-    └── plagiarism_detection.log # System logs
+├── README.md                    # Project documentation  
+├── requirements.txt             # Python dependencies (production-ready)
+├── config.py                   # Configuration settings
+├── main.py                     # CLI interface and main entry point
+├── MODEL_INFO.md               # Trained model information
+├── clean_notebook_emojis.py    # Notebook cleanup utility
+├── data/                       # Dataset storage
+│   ├── processed/              # SNLI dataset files (569K samples)
+│   ├── backups/               # Dataset backups with metadata
+│   └── working/               # Processed sample data
+├── models/                     # Trained models
+│   ├── bert_plagiarism_detector_*.pth      # Model weights (417MB)
+│   ├── bert_plagiarism_detector_*_metadata.json  # Model metadata
+│   └── bert_plagiarism_detector_*_tokenizer/     # Tokenizer files
+├── test_files/                 # Diverse test documents (14 files)
+│   ├── climate_change_essay.txt
+│   ├── ai_healthcare_essay.txt
+│   ├── consumer_psychology.txt
+│   └── ... (11 more diverse topics)
+├── notebooks/                  # Jupyter notebooks
+│   └── Plagirism-Detection.ipynb  # Main training/testing notebook
+├── results/                    # Analysis outputs and visualizations
+├── scripts/                    # Utility scripts
+└── logs/                       # Application logs
 ```
 
-## 🎯 Performance Targets
-
-Based on research and similar implementations:
-- **Accuracy**: 95%+ on test dataset
-- **Precision**: 96%+ for plagiarism detection
-- **Recall**: 95%+ for catching plagiarized content
-- **F1-Score**: 95%+ overall performance
-
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
-- Python 3.8 or higher
-- Conda environment manager
+- Python 3.13+ (tested with 3.13.7)
 - CUDA-compatible GPU (recommended)
+- 8GB+ RAM for model training
 
 ### Installation
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/SaiGuruInukurthi/Plagiarism-detection.git
    cd plagiarism-detection
    ```
 
@@ -223,136 +139,161 @@ Based on research and similar implementations:
 3. **Install dependencies**
    ```bash
    pip install -r requirements.txt
-   pip install datasets  # For SNLI dataset access
-   ```
-
-4. **Download SNLI dataset** (if not already present)
-   ```bash
-   python scripts/download_snli_hf.py
    ```
 
 ### Quick Start
 
-1. **Check system status**
+1. **Open the main notebook**
    ```bash
-   python main.py --status
+   jupyter lab notebooks/Plagirism-Detection.ipynb
    ```
 
-2. **Set up the system**
-   ```bash
-   python main.py --setup
+2. **Run the trained model** (cells 44-46 in notebook)
+   - Cell 44: File-based plagiarism detection functions
+   - Cell 45: Automated testing on all file combinations  
+   - Cell 46: Manual testing for custom files
+
+3. **Test with your own files**
+   ```python
+   # In the notebook
+   result = test_custom_files('path/to/file1.txt', 'path/to/file2.txt')
    ```
 
-3. **Compare two text files**
-   ```bash
-   python main.py --compare file1.txt file2.txt
-   ```
+### File-Based Testing
 
-4. **Verify dataset**
-   ```bash
-   ls -la data/processed/
-   # Should show ~569K samples across train/validation/test splits
-   ```
+The system includes a comprehensive file-based testing suite:
 
-## 📊 Usage Examples
+```python
+# Automatic testing on all 14 test files (91 combinations)
+# Run cell 45 in the notebook for complete analysis
+
+# Manual testing on specific files
+result = analyze_file_pair(
+    Path('test_files/original_essay.txt'),
+    Path('test_files/plagiarized_essay.txt'),
+    bert_trainer.bert_classifier,
+    bert_trainer.tokenizer,
+    device
+)
+```
+
+## Technical Implementation
+
+### Core Technologies
+- **PyTorch 2.8.0** - Deep learning framework with CUDA support
+- **Transformers 4.56.2** - Hugging Face BERT implementation
+- **Scikit-learn 1.7.2** - Evaluation metrics
+- **Pandas 2.3.2** - Data manipulation
+- **NLTK 3.9.1** - Text preprocessing
+
+### Model Architecture
+- **Base Model**: BERT-base-uncased (12 layers, 768 hidden units)
+- **Classification Head**: Linear layer for binary classification
+- **Training**: Fine-tuned on SNLI dataset with manual training loop
+- **Optimization**: AdamW optimizer with learning rate scheduling
+- **Regularization**: Dropout layers for generalization
+
+### Key Features
+1. **File Format Support**
+   - Plain text (.txt) files
+   - Automatic encoding detection
+   - Comprehensive error handling
+
+2. **Advanced Processing**
+   - BERT tokenization with 128 max length
+   - Confidence score calculation
+   - Batch processing capabilities
+
+3. **Performance Monitoring**
+   - Real-time accuracy tracking
+   - Confidence interval analysis
+   - Detailed prediction logging
+
+## Usage Examples
 
 ### Basic Similarity Check
 ```python
-from src.similarity_detector import PlagiarismDetector
-
-detector = PlagiarismDetector()
-similarity_score = detector.compare_texts(text1, text2)
-print(f"Similarity: {similarity_score:.2%}")
+# Load the trained model (available in notebook)
+result = predict_plagiarism(text1, text2, model, tokenizer, device)
+print(f"Plagiarized: {result['is_plagiarized']}")
+print(f"Confidence: {result['confidence']:.1%}")
 ```
 
 ### Batch Processing
 ```python
-from src.batch_processor import BatchProcessor
-
-processor = BatchProcessor()
-results = processor.process_directory("assignments/")
-processor.generate_report(results, "similarity_report.html")
+# Test all files in test_files directory
+# Automatically runs 91 comparisons on 14 diverse files
+# See notebook cell 45 for implementation
 ```
 
-## 🔬 Algorithms Implemented
+## Performance Analysis
 
-### 1. TF-IDF + Cosine Similarity
-- **Purpose**: Lexical similarity detection
-- **Strengths**: Fast, interpretable, good for exact matches
-- **Use Case**: Detecting verbatim copying
+### Model Strengths
+- **High accuracy** (86.7%) on diverse text pairs
+- **Good discrimination** between similar and different topics
+- **Fast inference** (<1 second per comparison)
+- **Robust handling** of different writing styles
 
-### 2. BERT-based Semantic Similarity
-- **Purpose**: Semantic understanding and paraphrasing detection
-- **Strengths**: Catches paraphrased content, context-aware
-- **Use Case**: Advanced plagiarism with rewording
+### Testing Coverage
+- **91 file combinations** tested automatically
+- **14 diverse topics** covering multiple domains
+- **Comprehensive evaluation** of false positive rates
+- **Confidence score validation** across different similarity levels
 
-### 3. N-gram Analysis
-- **Purpose**: Sequence-based similarity
-- **Strengths**: Detects structural similarities
-- **Use Case**: Partial copying and rearrangement
+## Development History
 
-### 4. Jaccard Similarity
-- **Purpose**: Set-based similarity
-- **Strengths**: Simple, effective for token overlap
-- **Use Case**: Quick similarity estimation
+### Completed Milestones
+- ✅ **Environment Setup** - Conda environment with Python 3.13
+- ✅ **Dataset Processing** - SNLI dataset (569K samples) downloaded and processed
+- ✅ **Model Training** - BERT classifier fine-tuned with 86.7% accuracy
+- ✅ **File-Based Testing** - 14 diverse test files with automated evaluation
+- ✅ **Code Cleanup** - Removed duplicates and optimized notebook structure
+- ✅ **Production Ready** - Comprehensive documentation and testing
 
-## 📈 Evaluation Metrics
+## Configuration
 
-- **Accuracy**: Overall correctness of predictions
-- **Precision**: True positives / (True positives + False positives)
-- **Recall**: True positives / (True positives + False negatives)
-- **F1-Score**: Harmonic mean of precision and recall
-- **ROC-AUC**: Area under the ROC curve
-- **Confusion Matrix**: Detailed prediction breakdown
+The system uses `config.py` for configuration management:
+- Dataset paths and processing parameters
+- Model hyperparameters and training settings
+- Logging and output configuration
 
-## 🔧 Configuration
-
-Key configuration parameters in `config.py`:
-- **Similarity thresholds**: Define plagiarism detection levels
-- **Model parameters**: BERT model configuration
-- **Processing options**: Text cleaning settings
-- **Output formats**: Report generation options
-
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/new-algorithm`)
-3. Commit changes (`git commit -am 'Add new similarity algorithm'`)
-4. Push to branch (`git push origin feature/new-algorithm`)
+2. Create a feature branch (`git checkout -b feature/improvement`)
+3. Commit changes (`git commit -am 'Add improvement'`)
+4. Push to branch (`git push origin feature/improvement`)
 5. Create Pull Request
 
-## 📝 License
+## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## 📚 References
+## References
 
 1. **Academic Papers**
-   - "Academic plagiarism detection: a systematic literature review" (Foltýnek et al., 2019)
-   - "Understanding plagiarism linguistic patterns, textual features, and detection methods" (Alzahrani et al., 2011)
-   - "A large annotated corpus for learning natural language inference" (Bowman et al., 2015) - SNLI paper
+   - "A large annotated corpus for learning natural language inference" (Bowman et al., 2015) - SNLI Dataset
+   - "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding" (Devlin et al., 2018)
 
 2. **Datasets**
-   - **Stanford Natural Language Inference (SNLI) Corpus**: `stanfordnlp/snli` on Hugging Face
-   - **Total samples**: 569,033 sentence pairs adapted for plagiarism detection
-   - **Original SNLI paper**: https://arxiv.org/abs/1508.05326
+   - **Stanford Natural Language Inference (SNLI) Corpus**: 569,033 sentence pairs
+   - **Hugging Face**: `stanfordnlp/snli` dataset
 
 3. **Libraries and Frameworks**
-   - **Hugging Face Datasets**: For SNLI dataset access
-   - **Hugging Face Transformers**: For BERT and language models
-   - **Scikit-learn**: For traditional ML algorithms
-   - **PyTorch**: For deep learning implementations
-   - **Pandas/NumPy**: For data processing
+   - **PyTorch**: Deep learning framework
+   - **Hugging Face Transformers**: BERT implementation
+   - **Scikit-learn**: Evaluation metrics
+   - **Pandas/NumPy**: Data processing
 
-## 📞 Contact
+## Contact
 
-For questions, suggestions, or collaboration opportunities, please contact:
-- **Email**: [your-email@domain.com]
-- **GitHub**: [your-github-username]
+For questions, suggestions, or collaboration:
+- **Repository**: [https://github.com/SaiGuruInukurthi/Plagiarism-detection](https://github.com/SaiGuruInukurthi/Plagiarism-detection)
+- **Issues**: Please use GitHub Issues for bug reports and feature requests
 
 ---
 
-**Last Updated**: September 27, 2025
-**Version**: 1.0.0
-**Status**: In Development - Dataset Ready ✅
-**Dataset Status**: SNLI downloaded and processed (569K samples) ✅
+**Last Updated**: September 28, 2025  
+**Version**: 2.0.0  
+**Status**: Production Ready ✅  
+**Model Performance**: 86.7% accuracy, 0.868 F1-score ✅

@@ -1,1 +1,0 @@
-ML techniques are effective methods for processing big datasets and creating forecasts using data patterns.
